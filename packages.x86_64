@@ -1,0 +1,16 @@
+base
+linux
+linux-firmware
+mkinitcpio
+mkinitcpio-archiso
+systemd-sysvcompat
+syslinux
+dbus
+networkmanager
+wpa_supplicant
+cage
+chromium
+noto-fonts
+mesa
+xkeyboard-config
+zsh

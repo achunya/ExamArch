@@ -1,0 +1,15 @@
+default partial hidden xkb_symbols "basic" {
+    include "pc+us"
+    name[Group1] = "Kiosk No Modifiers";
+
+    // Mute Left and Right Control
+    key <LCTL> { [ VoidSymbol ] };
+    key <RCTL> { [ VoidSymbol ] };
+
+    // Mute Left and Right Alt
+    key <LALT> { [ VoidSymbol ] };
+    key <RALT> { [ VoidSymbol ] };
+
+    // Mute Tab
+    key <TAB>  { [ VoidSymbol ] };
+};

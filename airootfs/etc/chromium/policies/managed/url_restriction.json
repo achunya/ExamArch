@@ -1,0 +1,13 @@
+{
+  "URLBlocklist": [
+    "*"
+  ],
+  "URLAllowlist": [
+    "https://lms.astanait.edu.kz",
+    "https://lms.astanait.edu.kz/*",
+    "https://login.microsoftonline.com/*",
+    "https://mysignins.microsoft.com/*"
+  ],
+  "IncognitoModeAvailability": 1,
+  "DeveloperToolsAvailability": 2
+}
