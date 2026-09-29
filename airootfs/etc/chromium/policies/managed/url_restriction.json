@@ -3,10 +3,12 @@
     "*"
   ],
   "URLAllowlist": [
-    "https://lms.astanait.edu.kz",
-    "https://lms.astanait.edu.kz/*",
-    "https://login.microsoftonline.com/*",
-    "https://mysignins.microsoft.com/*"
+    "lms.astanait.edu.kz",
+    "login.microsoftonline.com",
+    "login.live.com",
+    "*.msauth.net",
+    "*.msftauth.net",
+    "*.msftauthimages.net"
   ],
   "IncognitoModeAvailability": 1,
   "DeveloperToolsAvailability": 2
