@@ -11,5 +11,8 @@
     "*.msftauthimages.net"
   ],
   "IncognitoModeAvailability": 1,
-  "DeveloperToolsAvailability": 2
+  "DeveloperToolsAvailability": 2,
+  "ExtensionInstallForcelist": [
+  "gkihmdkemmjchaccfmibdddlkklfocbn;file:///usr/local/share/chromium/extensions/gkihmdkemmjchaccfmibdddlkklfocbn.crx"
+  ]
 }
