@@ -1,1 +1,4 @@
-pkg_cache/*
+pkg_cache/
+iso_out/
+work/
+build.log

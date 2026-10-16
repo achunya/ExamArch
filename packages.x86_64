@@ -14,3 +14,10 @@ noto-fonts
 mesa
 xkeyboard-config
 zsh
+pipewire
+pipewire-pulse
+wireplumber
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+python
+python-evdev

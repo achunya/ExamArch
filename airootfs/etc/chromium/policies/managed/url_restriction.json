@@ -4,15 +4,26 @@
   ],
   "URLAllowlist": [
     "lms.astanait.edu.kz",
+    "oes.kz",
     "login.microsoftonline.com",
     "login.live.com",
     "*.msauth.net",
     "*.msftauth.net",
-    "*.msftauthimages.net"
+    "*.msftauthimages.net",
+    "chrome-extension://gkihmdkemmjchaccfmibdddlkklfocbn"
   ],
   "IncognitoModeAvailability": 1,
   "DeveloperToolsAvailability": 2,
   "ExtensionInstallForcelist": [
-  "gkihmdkemmjchaccfmibdddlkklfocbn;file:///usr/local/share/chromium/extensions/gkihmdkemmjchaccfmibdddlkklfocbn.crx"
+    "gkihmdkemmjchaccfmibdddlkklfocbn;https://clients2.google.com/service/update2/crx"
+  ],
+  "ScreenCaptureAllowed": true,
+  "VideoCaptureAllowedUrls": [
+    "https://lms.astanait.edu.kz",
+    "https://[*.]oes.kz"
+  ],
+  "AudioCaptureAllowedUrls": [
+    "https://lms.astanait.edu.kz",
+    "https://[*.]oes.kz"
   ]
 }

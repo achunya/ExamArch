@@ -1,0 +1,39 @@
+#!/bin/bash
+LMS_URL="https://lms.astanait.edu.kz"
+
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_SESSION_TYPE=wayland
+
+OUT=""
+for s in /sys/class/drm/card*-*/status; do
+    if [ "$(cat "$s" 2>/dev/null)" = "connected" ]; then
+        OUT="$(basename "$(dirname "$s")")"
+        OUT="${OUT#card*-}"
+        break
+    fi
+done
+
+mkdir -p "$HOME/.config/xdg-desktop-portal-wlr"
+cat > "$HOME/.config/xdg-desktop-portal-wlr/config" <<EOF
+[screencast]
+chooser_type=none
+output_name=${OUT}
+max_fps=15
+EOF
+
+VARS="WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
+systemctl --user import-environment $VARS
+dbus-update-activation-environment --systemd $VARS
+
+systemctl --user stop xdg-desktop-portal.service xdg-desktop-portal-wlr.service 2>/dev/null
+systemctl --user start pipewire.service wireplumber.service 2>/dev/null
+
+exec chromium \
+    --ozone-platform=wayland \
+    --enable-features=WebRTCPipeWireCapturer \
+    --disable-dev-shm-usage \
+    --disable-gpu \
+    --kiosk \
+    --no-first-run \
+    --no-default-browser-check \
+    "$LMS_URL"
