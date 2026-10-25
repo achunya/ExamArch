@@ -25,5 +25,13 @@
   "AudioCaptureAllowedUrls": [
     "https://lms.astanait.edu.kz",
     "https://[*.]oes.kz"
-  ]
+  ],
+  "DnsOverHttpsMode": "off",
+  "BrowserSignin": 0,
+  "SyncDisabled": true,
+  "PasswordManagerEnabled": false,
+  "AutofillAddressEnabled": false,
+  "AutofillCreditCardEnabled": false,
+  "SearchSuggestEnabled": false,
+  "MetricsReportingEnabled": false
 }

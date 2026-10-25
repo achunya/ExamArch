@@ -21,3 +21,5 @@ xdg-desktop-portal
 xdg-desktop-portal-wlr
 python
 python-evdev
+nftables
+dnsmasq

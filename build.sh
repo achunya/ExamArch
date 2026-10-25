@@ -27,9 +27,14 @@ d["URLAllowlist"] += ["chrome://policy", "chrome://extensions",
 json.dump(d, open(p, "w"), indent=2)
 EOF
 
-    install -m 755 "$SRC"/tools/verify_* "$PROFILE/airootfs/usr/local/bin/"
-    sed -i 's|^)$|  ["/usr/local/bin/verify_oes.py"]="0:0:755"\n  ["/usr/local/bin/verify_screenshare.sh"]="0:0:755"\n)|' \
-        "$PROFILE/profiledef.sh"
+    install -Dm 644 "$PROFILE/airootfs/etc/nftables.conf" "$PROFILE/airootfs/etc/examarch/nftables.enforce.conf"
+    sed -i 's|# EXAMARCH-VERDICT|accept|' "$PROFILE/airootfs/etc/nftables.conf"
+    echo "log-queries" >> "$PROFILE/airootfs/etc/dnsmasq.conf"
+    for f in "$SRC"/tools/*; do
+        n="$(basename "$f")"
+        install -m 755 "$f" "$PROFILE/airootfs/usr/local/bin/$n"
+        sed -i "s|^)\$|  [\"/usr/local/bin/$n\"]=\"0:0:755\"\n)|" "$PROFILE/profiledef.sh"
+    done
     SG="$PROFILE/airootfs/etc/systemd/system"
     mkdir -p "$SG/serial-getty@ttyS0.service.d" "$SG/getty.target.wants"
     printf '%s\n' '[Service]' 'ExecStart=' \
