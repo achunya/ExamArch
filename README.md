@@ -39,6 +39,7 @@ To use a different LMS, change `LMS_URL` in `airootfs/usr/local/bin/kiosk-sessio
 - OES installs and activates on the LMS
 - Screen sharing (tested with `getDisplayMedia`)
 - Separate dev and prod builds from one profile
+- Network allowlist: outgoing traffic only to the LMS, Microsoft login and OES (nftables + dnsmasq); dev logs what prod would block (`verify_network.sh`)
 
 Still needs to be checked on the prod image: the keyboard lockdown (Ctrl, Alt, Tab), disabled console switching and SysRq, and the locked root account.
 
@@ -53,12 +54,13 @@ A short log of real problems I hit, mostly so I don't forget them:
 - `dbus-run-session` put the browser on its own D-Bus, so PipeWire and the screen sharing portal were invisible to it
 - A dev config file lost to the prod one because of alphabetical ordering of systemd drop-ins
 - Screen sharing failed because I'd forced the software renderer (pixman). xdg-desktop-portal-wlr needs dmabuf, which pixman doesn't provide — the error message doesn't say that, I found it in the source
+- The network filter's IP set stayed empty because dnsmasq answered from its cache, and cached answers don't populate nftables sets — fixed by disabling the dnsmasq cache (systemd-resolved caches instead)
+- nftables and dnsmasq were installed but never started — enabled through systemd symlinks in the profile instead of `customize_airootfs.sh`
 
 ## TODO
 
 **System**
 - Run the full lockdown test list on the prod image (key combos, `chrome://` / `file://` URLs, a second keyboard, Chromium crash, "Stop sharing", second monitor)
-- Add an nftables firewall as a second layer behind the Chromium policy
 - Speed up builds (currently ~12 min)
 
 **Data**
